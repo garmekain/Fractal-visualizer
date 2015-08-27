@@ -46,12 +46,12 @@ function submitMotifPoints() {
 function baseAsMotif() {
 	if (document.getElementById("baseasmotif").checked) {
 		motif = base;
-		refreshCanvas();
 		document.getElementById("motifpoints").disabled = true;
 	} else {
-		submitMotifPoints();
+		motif = eval(document.getElementById("presetsmotif").value);
 		document.getElementById("motifpoints").disabled = false;
 	};
+	refreshCanvas();
 }
 
 function changeBase() {

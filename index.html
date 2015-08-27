@@ -19,7 +19,7 @@
 		<span>Base points:</span>
 		<select id="presetsbase" onchange="changeBase()">
 		  	<option value="line">Line</option>
-		  	<option value="koch">Koch</option>
+		  	<option value="koch" selected>Koch</option>
 		  	<option value="dragon">Dragon</option>
 		  	<option value="dragon2">Dragon 2</option>
 		  	<option value="quadratickochtype1">Quadratic Koch type 1</option>
@@ -31,7 +31,7 @@
 		  	<option value="triangle">Triangle</option>
 		  	<option value="square">Square</option>
 		  	<option value="pentagon">Pentagon</option>
-		  	<option value="hexagon" selected>Hexagon</option>
+		  	<option value="hexagon">Hexagon</option>
 		  	<option value="heptagon">Heptagon</option>
 		  	<option value="halfhexagon">Half hexagon</option>
 		  	<option value="spike">Spike</option>
@@ -47,7 +47,7 @@
 
 		<span>Motif points:</span><br>
 
-		<input type="checkbox" id="baseasmotif" onclick="baseAsMotif()">
+		<input type="checkbox" id="baseasmotif" onclick="baseAsMotif()" checked>
 		<label for="baseasmotif">Use base as motif</label>
 
 		<select id="presetsmotif" onchange="changeMotif()">

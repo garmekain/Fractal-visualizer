@@ -3,9 +3,9 @@ var canvas = document.getElementById('canvas'),
 
 var width = window.innerWidth,
 	height = window.innerHeight,
-	scale = 300,
-	base = hexagon,
-	motif = halfhexagon.reverse();
+	scale = 200,
+	base = koch,
+	motif = base;
 
 function resizeCanvas() {
 	width = window.innerWidth;

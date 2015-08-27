@@ -13,8 +13,19 @@ function invertMotif() {
 	refreshCanvas();
 }
 
+function valid( string ){
+    var unique='';
+    for(var i=0; i<string.length; i++){
+        if(string.lastIndexOf(string[i]) == string.indexOf(string[i])){
+            unique += string[i];
+        }
+    }
+    return unique;
+}
+
 function submitBasePoints() {
 	basePoints = document.getElementById("basepoints").value;
+	console.log(valid(basePoints));
 	s = "[" + basePoints + "]";
 	base = eval(s);
 	if (document.getElementById("baseasmotif").checked) {

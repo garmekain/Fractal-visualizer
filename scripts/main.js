@@ -1,7 +1,8 @@
-canvas.addEventListener('mousedown', onmousedown, false);
-canvas.addEventListener('mousemove', onmousemove, false);
-canvas.addEventListener('mouseup', onmouseup, false);
-canvas.addEventListener('DOMMouseScroll', onmousescroll, false);
+//canvas.addEventListener('mousedown', onmousedown, false);
+//canvas.addEventListener('mousemove', onmousemove, false);
+//canvas.addEventListener('mouseup', onmouseup, false);
+canvas.addEventListener('mousewheel', onmousescroll, false); // Chrome
+canvas.addEventListener('DOMMouseScroll', onmousescroll, false); // Firefox
 var controls = document.getElementById("controls");
 controls.addEventListener('mousedown', function() {clicked=true}, false);
 controls.addEventListener('mousemove', function() {if(clicked=true) {clicked=false}}, false);
@@ -23,7 +24,7 @@ var clicked = false,
 	panning = false,
 	selectedPoint = -1;
 
-var onmousedown = function(e) {
+canvas.onmousedown = function(e) {
 	clicked = true;
 
 	getMousePos(e);
@@ -40,7 +41,7 @@ var onmousedown = function(e) {
 	};
 }
 
-var onmousemove = function(e) {
+canvas.onmousemove = function(e) {
 	if (clicked) {
 		getMousePos(e);
 		if (dragging) {
@@ -56,14 +57,31 @@ var onmousemove = function(e) {
 	};
 }
 
-var onmouseup = function(e) {
+canvas.onmouseup = function(e) {
 	clicked = false;
 	dragging = false;
 	panning = false;
 }
 
 function onmousescroll(e) {
-	delta = e.detail/3;
+	if (e.detail) {
+		delta = e.detail/3;
+	} else if (e.wheelDelta) {
+		delta = -e.wheelDelta/120
+	};
 	getMousePos(e);
 	zoom([(mouse.x - offset.x)/scale, (offset.y - mouse.y)/scale], delta);
+}
+
+
+// Inizialization
+
+
+window.onload = function() {
+	initialize();
+	draw();
+}
+window.onresize = function() {
+	initialize();
+	draw();
 }

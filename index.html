@@ -8,62 +8,72 @@
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,200,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<canvas id="canvas"></canvas>
 	<div id="controls">
-		<label for="steps">Level <input type="range" id="steps" min="0" value="3" max="10" step="1" oninput="changeSteps()"></label>
+		<label for="steps">Level <input type="range" id="steps" min="0" value="5" max="10" step="1" oninput="changeSteps()"></label>
 
-		<input type="checkbox" id="showBase" name="showbase" checked onclick="showBase()">
-		<label for="showBase">Show base</label>
+		<input type="checkbox" id="showBase" checked onclick="showBase()">
+		<label for="showBase">Show base</label><br>
+
+		<hr>
 
 		<span>Base points:</span>
 		<select id="presetsbase" onchange="changeBase()">
 		  	<option value="line">Line</option>
-		  	<option value="triangle" selected="selected">Triangle</option>
-		  	<option value="square">Square</option>
-		  	<option value="pentagon">Pentagon</option>
-		  	<option value="hexagon">Hexagon</option>
-		  	<option value="heptagon">Heptagon</option>
 		  	<option value="koch">Koch</option>
 		  	<option value="dragon">Dragon</option>
 		  	<option value="dragon2">Dragon 2</option>
-		  	<option value="quadratickochtype1">Quadratic koch type 1</option>
-		  	<option value="quadratickochtype2">Quadratic koch type 2</option>
+		  	<option value="quadratickochtype1">Quadratic Koch type 1</option>
+		  	<option value="quadratickochtype2">Quadratic Koch type 2</option>
 		  	<option value="peano">Peano</option>
 		  	<option value="levi">Levi</option>
 		  	<option value="vertline">Vertical line</option>
 		  	<option value="sierpinski">Sierpinski</option>
+		  	<option value="triangle">Triangle</option>
+		  	<option value="square">Square</option>
+		  	<option value="pentagon">Pentagon</option>
+		  	<option value="hexagon" selected>Hexagon</option>
+		  	<option value="heptagon">Heptagon</option>
+		  	<option value="halfhexagon">Half hexagon</option>
 		  	<option value="spike">Spike</option>
 		  	<option value="spiral">Spiral</option>
 		  	<option value="nuclear">Nuclear</option>
 		  	<option value="tree">Tree</option>
-		  	<option value="forest">Dead forest</option>
+		  	<option value="forest">Forest</option>
 		</select>
 		<textarea id="basepoints" rows="10"></textarea>
 		<button onclick="submitBasePoints()">Refresh base points</button>
+
+		<hr>
+
+		<span>Motif points:</span><br>
+
 		<input type="checkbox" id="baseasmotif" onclick="baseAsMotif()">
 		<label for="baseasmotif">Use base as motif</label>
-		<span>Motif points:</span>
+
 		<select id="presetsmotif" onchange="changeMotif()">
 		  	<option value="line">Line</option>
-		  	<option value="koch" selected="selected">Koch</option>
+		  	<option value="koch">Koch</option>
 		  	<option value="dragon">Dragon</option>
 		  	<option value="dragon2">Dragon 2</option>
-		  	<option value="quadratickochtype1">Quadratic koch type 1</option>
-		  	<option value="quadratickochtype2">Quadratic koch type 2</option>
+		  	<option value="quadratickochtype1">Quadratic Koch type 1</option>
+		  	<option value="quadratickochtype2">Quadratic Koch type 2</option>
 		  	<option value="peano">Peano</option>
 		  	<option value="levi">Levi</option>
 		  	<option value="vertline">Vertical line</option>
 		  	<option value="sierpinski">Sierpinski</option>
+		  	<option value="halfhexagon" selected>Half hexagon</option>
 		  	<option value="spike">Spike</option>
 		  	<option value="spiral">Spiral</option>
 		  	<option value="nuclear">Nuclear</option>
 		  	<option value="tree">Tree</option>
-		  	<option value="forest">Dead forest</option>
+		  	<option value="forest">Forest</option>
 		</select>
 		<textarea id="motifpoints" columns="1" rows="10"></textarea>
 		<button onclick="submitMotifPoints()">Refresh motif points</button>
 		<button onclick="invertMotif()"> Invert motif</button>
 	</div>
+
+	<canvas id="canvas"></canvas>
 	<script type="text/javascript" src="scripts/inputFunctions.js"></script>
 	<script type="text/javascript" src="scripts/fractal.js"></script>
 	<script type="text/javascript" src="scripts/math.js"></script>

@@ -12,9 +12,11 @@ body {
 	width: 100%;
 	height: 100%;
 	z-index: 0;
+	cursor: default;
 }
 
 #controls {
+	width: 200px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -25,21 +27,66 @@ body {
 	pointer-events: all;
 }
 #controls > * {
-	display: block;
+	width: 100%;
 	color: white;
-	margin: 10px auto;
+	margin-top: 5px;
 }
-#controls > select {
+#controls > select, #controls > textarea {
 	color: black;
 }
+#controls > textarea {
+	border-radius: 4px;
+	border: none;
+}
 #controls > button {
-	font-weight: bold;
+	font-weight: 700;
 	border: none;
 	width: 100%;
 	background-color: rgba(0,100,225,1);
 	border-radius: 50px;
 	padding: 5px 0;
 }
-#controls > textarea {
-	color: black;
+hr {
+	height: 0;
+	border: none;
+	background-color: red;
+	margin: 25px auto;
+}
+
+
+
+input[type=checkbox] {
+	display: none;
+}
+input[type=checkbox] + label:before {
+    content: "";  
+    display: inline-block;  
+    width: 15px;  
+    height: 15px;  
+    vertical-align:middle;
+    margin-right: 8px;  
+    background-color: #ccc;
+    border-radius: 2px;  
+}
+input[type=checkbox]:checked + label:before {
+    content:"\2714";
+    color:white;
+    background-color: rgb(0,100,225); 
+    text-align:center;
+    line-height:15px;
+}
+
+
+
+select {
+  	width: 100%;
+    padding:3px;
+    margin: 0;
+    border-radius:4px;
+    box-shadow: inset 0 0 0 1px #ccc;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    cursor:pointer;
 }

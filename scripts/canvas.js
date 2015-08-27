@@ -4,14 +4,13 @@ var canvas = document.getElementById('canvas'),
 var width = window.innerWidth,
 	height = window.innerHeight,
 	scale = 300,
-	base = triangle,
-	motif = koch,
-	offset = {x: 11/10*width/2, y: height/2},
-	focus = [0,0];
+	base = hexagon,
+	motif = halfhexagon.reverse();
 
 function resizeCanvas() {
 	width = window.innerWidth;
 	height = window.innerHeight;
+	offset = {x: width/2+200/2, y: height/2}
 	canvas.width = width;
 	canvas.height = height;
 }
@@ -91,8 +90,3 @@ function initialize() {
 	printBasePoints();
 	printMotifPoints();
 }
-
-
-
-initialize();
-draw();

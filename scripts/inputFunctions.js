@@ -13,33 +13,54 @@ function invertMotif() {
 	refreshCanvas();
 }
 
-function valid( string ){
-    var unique='';
-    for(var i=0; i<string.length; i++){
-        if(string.lastIndexOf(string[i]) == string.indexOf(string[i])){
-            unique += string[i];
-        }
-    }
-    return unique;
-}
+function isValid(string) {
+	array = string.split("");
+	var valid = true;
+	for (var i = 0; i < array.length; i++) {
+		if (array[i] != '[' &&
+			array[i] != ']' &&
+			array[i] != ',' &&
+			array[i] != '-' &&
+			array[i] != '.' &&
+			array[i] != '0' &&
+			array[i] != '1' &&
+			array[i] != '2' &&
+			array[i] != '3' &&
+			array[i] != '4' &&
+			array[i] != '5' &&
+			array[i] != '6' &&
+			array[i] != '7' &&
+			array[i] != '8' &&
+			array[i] != '9') {
+			valid=false;
+			break;
+		}
+	}
 
+	return valid;
+}
 function submitBasePoints() {
 	basePoints = document.getElementById("basepoints").value;
-	console.log(valid(basePoints));
-	s = "[" + basePoints + "]";
-	base = eval(s);
-	if (document.getElementById("baseasmotif").checked) {
-		motif = base;
+	if (isValid(basePoints)) {
+		s = "[" + basePoints + "]";
+		base = eval(s);
+		if (document.getElementById("baseasmotif").checked) {
+			motif = base;
+		};
+		refreshCanvas();
+	} else {
+		alert('Invalid points. Format: [x1,y1],[x2,y2]')
 	}
-	refreshCanvas();
 }
 
 function submitMotifPoints() {
 	if (!document.getElementById("baseasmotif").checked) {
 		motifPoints = document.getElementById("motifpoints").value;
-		s = "[" + motifPoints + "]";
-		motif = eval(s);
-		refreshCanvas();
+		if (isValid(motifPoints)) {
+			s = "[" + motifPoints + "]";
+			motif = eval(s);
+			refreshCanvas();
+		};
 	}
 }
 

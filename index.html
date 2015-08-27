@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fractal generator</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/controls.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,200,300,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<div id="controls">
+		<label for="steps">Level <input type="range" id="steps" min="0" value="3" max="10" step="1" oninput="changeSteps()"></label>
+
+		<input type="checkbox" id="showBase" name="showbase" checked onclick="showBase()">
+		<label for="showBase">Show base</label>
+
+		<span>Base points:</span>
+		<select id="presetsbase" onchange="changeBase()">
+		  	<option value="line">Line</option>
+		  	<option value="triangle" selected="selected">Triangle</option>
+		  	<option value="square">Square</option>
+		  	<option value="pentagon">Pentagon</option>
+		  	<option value="hexagon">Hexagon</option>
+		  	<option value="heptagon">Heptagon</option>
+		  	<option value="koch">Koch</option>
+		  	<option value="dragon">Dragon</option>
+		  	<option value="dragon2">Dragon 2</option>
+		  	<option value="quadratickochtype1">Quadratic koch type 1</option>
+		  	<option value="quadratickochtype2">Quadratic koch type 2</option>
+		  	<option value="peano">Peano</option>
+		  	<option value="levi">Levi</option>
+		  	<option value="vertline">Vertical line</option>
+		  	<option value="sierpinski">Sierpinski</option>
+		  	<option value="spike">Spike</option>
+		  	<option value="spiral">Spiral</option>
+		  	<option value="nuclear">Nuclear</option>
+		  	<option value="tree">Tree</option>
+		  	<option value="forest">Dead forest</option>
+		</select>
+		<textarea id="basepoints" rows="10"></textarea>
+		<button onclick="submitBasePoints()">Refresh base points</button>
+		<input type="checkbox" id="baseasmotif" onclick="baseAsMotif()">
+		<label for="baseasmotif">Use base as motif</label>
+		<span>Motif points:</span>
+		<select id="presetsmotif" onchange="changeMotif()">
+		  	<option value="line">Line</option>
+		  	<option value="koch" selected="selected">Koch</option>
+		  	<option value="dragon">Dragon</option>
+		  	<option value="dragon2">Dragon 2</option>
+		  	<option value="quadratickochtype1">Quadratic koch type 1</option>
+		  	<option value="quadratickochtype2">Quadratic koch type 2</option>
+		  	<option value="peano">Peano</option>
+		  	<option value="levi">Levi</option>
+		  	<option value="vertline">Vertical line</option>
+		  	<option value="sierpinski">Sierpinski</option>
+		  	<option value="spike">Spike</option>
+		  	<option value="spiral">Spiral</option>
+		  	<option value="nuclear">Nuclear</option>
+		  	<option value="tree">Tree</option>
+		  	<option value="forest">Dead forest</option>
+		</select>
+		<textarea id="motifpoints" columns="1" rows="10"></textarea>
+		<button onclick="submitMotifPoints()">Refresh motif points</button>
+		<button onclick="invertMotif()"> Invert motif</button>
+	</div>
+	<script type="text/javascript" src="scripts/inputFunctions.js"></script>
+	<script type="text/javascript" src="scripts/fractal.js"></script>
+	<script type="text/javascript" src="scripts/math.js"></script>
+	<script type="text/javascript" src="scripts/canvas.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+</body>
+</html>

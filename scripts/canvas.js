@@ -79,14 +79,15 @@ function printBasePoints() {
 
 function printMotifPoints() {
 	s = "";
-	for (var i = 0; i < motif.length; i++) {
-		s += "[" + motif[i][0] + "," + motif[i][1] + "]";
-		if (i < motif.length -1) {
+	var motifPoints = eval(document.getElementById("presetsmotif").value);
+	for (var i = 0; i < motifPoints.length; i++) {
+		s += "[" + motifPoints[i][0] + "," + motifPoints[i][1] + "]";
+		if (i < motifPoints.length -1) {
 			s += ",";
 		};
 	};
-	basepointbox = document.getElementById("motifpoints");
-	basepointbox.value = s;
+	motifpointbox = document.getElementById("motifpoints");
+	motifpointbox.value = s;
 }
 
 function drawBaseLine() {
@@ -119,4 +120,5 @@ function drawDots(pts) {
 function initialize() {
 	initializeCanvas();
 	printBasePoints();
+	printMotifPoints();
 }

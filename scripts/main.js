@@ -33,7 +33,7 @@ canvas.onmousedown = function(e) {
 		dist = distance(canvasMouse(), base[i]);
 		if (dist <= 10/scale) {
 			dragging = true;
-			selectedPoint = i;
+			index = i;
 			break;
 		} else {
 			panning = true;
@@ -45,7 +45,7 @@ canvas.onmousemove = function(e) {
 	if (clicked) {
 		getMousePos(e);
 		if (dragging) {
-			base[selectedPoint] = canvasMouse();
+			base[index] = canvasMouse();
 		} else if (panning) {
 			diff = [mouse.x - last.x, mouse.y - last.y];
 			offset = {x: offset.x + diff[0], y: offset.y + diff[1]};
@@ -70,7 +70,7 @@ function onmousescroll(e) {
 		delta = -e.wheelDelta/120
 	};
 	getMousePos(e);
-	zoom([(mouse.x - offset.x)/scale, (offset.y - mouse.y)/scale], delta);
+	zoom(canvasMouse(), delta);
 }
 
 

@@ -34,7 +34,3 @@ function transfMatrix(u, v) {
 function distance(p1, p2) {
 	return Math.sqrt((p1[0]-p2[0])*(p1[0]-p2[0]) + (p1[1]-p2[1])*(p1[1]-p2[1]));
 }
-
-function canvasToWindow(pt) {
-	return {x: offset.x + scale*pt[0], y: offset.y - scale*pt[1]};
-}

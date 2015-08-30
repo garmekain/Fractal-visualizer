@@ -48,6 +48,10 @@ function zoom(pt, dir) {
 	refreshCanvas();
 }
 
+function canvasToWindow(pt) {
+	return {x: offset.x + scale*pt[0], y: offset.y - scale*pt[1]};
+}
+
 function draw() {
 	if (steps != 0) {
 		fractal = eval(nestString("fractalPoints(base, motif)", "base", steps));
@@ -56,7 +60,7 @@ function draw() {
 	  	fractalLine(base);
 	};
 	if (showbase) {
-		baseLine(base);
+		drawBaseLine();
 		drawDots(base);
 	};
 }
@@ -85,8 +89,34 @@ function printMotifPoints() {
 	basepointbox.value = s;
 }
 
+function drawBaseLine() {
+  ctx.beginPath();
+  for (var i = 0; i < base.length; i++) {
+    ctx.lineTo(base[i][0],base[i][1]);
+  }
+  ctx.lineWidth = 6/scale;
+  ctx.save();
+  ctx.strokeStyle = "rgb(0,100,225)";
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawDots(pts) {
+  for (var i = pts.length - 1; i >= 0; i--) {
+  	ctx.save();
+    ctx.beginPath();
+    ctx.arc(pts[i][0], pts[i][1], 8/scale, 0, 2*Math.PI);
+    ctx.fillStyle = "rgb(0,100,225)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(pts[i][0], pts[i][1], 4/scale, 0, 2*Math.PI);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.restore();
+  };
+}
+
 function initialize() {
 	initializeCanvas();
 	printBasePoints();
-	printMotifPoints();
 }

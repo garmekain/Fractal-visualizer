@@ -1,5 +1,4 @@
-var steps = document.getElementById("steps").value,
-  showbase = document.getElementById("showBase").checked;
+var steps = document.getElementById("steps").value;
 
 function polygon(sides) {
   pts = [];
@@ -51,33 +50,6 @@ function fractalLine(pts) {
   ctx.lineWidth = 2/scale;
   ctx.stroke();
 };
-
-function baseLine(base) {
-  ctx.beginPath();
-  for (var i = 0; i < base.length; i++) {
-    ctx.lineTo(base[i][0],base[i][1]);
-  }
-  ctx.lineWidth = 6/scale;
-  ctx.save();
-  ctx.strokeStyle = "rgb(0,100,225)";
-  ctx.stroke();
-  ctx.restore();
-}
-
-function drawDots(pts) {
-  for (var i = pts.length - 1; i >= 0; i--) {
-  	ctx.save();
-    ctx.beginPath();
-    ctx.arc(pts[i][0], pts[i][1], 8/scale, 0, 2*Math.PI);
-    ctx.fillStyle = "rgb(0,100,225)";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(pts[i][0], pts[i][1], 4/scale, 0, 2*Math.PI);
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.restore();
-  };
-}
 
 function fractalPoints(base, motif) {
 	var pts = [];

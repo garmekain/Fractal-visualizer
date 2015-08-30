@@ -1,3 +1,5 @@
+var showbase = document.getElementById("showBase").checked;
+
 function changeSteps() {
 	steps = document.getElementById("steps").value;
 	refreshCanvas();
@@ -47,10 +49,24 @@ function submitBasePoints() {
 		if (document.getElementById("baseasmotif").checked) {
 			motif = base;
 		};
+		document.getElementById("steps").value=3;
+		document.getElementById("levelLabel").innerHTML=3;
+		steps=document.getElementById("steps").value;
+
 		refreshCanvas();
+		maxSteps = Math.floor((Math.log(50000/(base.length-1)))/Math.log(motif.length-1));
+		document.getElementById("steps").max = maxSteps;
 	} else {
 		alert('Invalid points. Format: [x1,y1],[x2,y2]')
 	}
+}
+
+function refreshControls() {
+	document.getElementById("steps").value=3;
+	document.getElementById("levelLabel").innerHTML=3;
+	steps=document.getElementById("steps").value;
+	maxSteps = Math.floor((Math.log(50000/(base.length-1)))/Math.log(motif.length-1));
+	document.getElementById("steps").max = maxSteps;
 }
 
 function submitMotifPoints() {
@@ -59,6 +75,7 @@ function submitMotifPoints() {
 		if (isValid(motifPoints)) {
 			s = "[" + motifPoints + "]";
 			motif = eval(s);
+
 			refreshCanvas();
 		};
 	}
@@ -68,9 +85,11 @@ function baseAsMotif() {
 	if (document.getElementById("baseasmotif").checked) {
 		motif = base;
 		document.getElementById("motifpoints").disabled = true;
+		refreshControls();
 	} else {
 		motif = eval(document.getElementById("presetsmotif").value);
 		document.getElementById("motifpoints").disabled = false;
+		refreshControls();
 	};
 	refreshCanvas();
 }

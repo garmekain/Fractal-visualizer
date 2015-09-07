@@ -12,6 +12,8 @@
 		<label for="steps">Level: <span id="levelLabel">4</span></label>
 		<input type="range" id="steps" min="0" value="4" max="6" step="1" oninput="document.getElementById('levelLabel').innerHTML = this.value; changeSteps()">
 
+		<button onclick="center()">Center canvas</button>
+
 		<input type="checkbox" id="showBase" checked onclick="showBase()">
 		<label for="showBase">Show base</label><br>
 

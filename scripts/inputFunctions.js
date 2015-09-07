@@ -5,6 +5,14 @@ function changeSteps() {
 	refreshCanvas();
 }
 
+function center() {
+	ctx.setTransform(1,0,0,1,0,0);
+	ctx.scale(scale,-scale);
+	offset = { x: width/2, y: height/2 };
+	ctx.translate(offset.x/scale, -offset.y/scale);
+	refreshCanvas();
+}
+
 function showBase() {
 	showbase = document.getElementById("showBase").checked;
 	refreshCanvas();
